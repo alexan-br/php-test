@@ -7,8 +7,14 @@ if (isset($_GET['file'])) {
     //check if file exist
     if (file_exists($filePath)) {
         //set correct data for download
+
+        //indicate media-type of our file to download
         header('Content-Type: application/json');
+
+        //indicates that the file should be dowloaded and sets its basename
         header('Content-Disposition: attachment; filename="' . basename($filePath) . '"');
+
+        //read ou file that should be downloaded
         readfile($filePath);
         exit;
     } else {
